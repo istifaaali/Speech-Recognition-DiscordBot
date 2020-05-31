@@ -3,7 +3,10 @@ const fs = require('fs');
 const cp = require("child_process");
 const client = new Discord.Client();
 const config = require('./config.json');
+const YouTube = require("discord-youtube-api");
+const youtube = new YouTube("AIzaSyAZFggAoNGSEG1DFTXmm2A9uSeE1qYKAW8");
 let fileName;
+let content;
 
 // make a new stream for each time someone starts to talk
 function generateOutputFileName(){
@@ -51,6 +54,13 @@ client.on('message', (msg, user) => {
 
         setInterval(function(){
           const voiceScan = ScanVoice(fileName);
+          const textFiles = fs.readdirSync('./speech_logs').filter(file => file.endsWith('.txt'));
+          for (const file of textFiles) {
+            fs.readFile(`${file}`, 'utf8', function(err, contents) {
+              console.log(contents);
+              contents = contents;
+            });
+          }
           console.log("TIMER RESET");
         }, 10000)
 

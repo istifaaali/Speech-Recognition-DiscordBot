@@ -4,6 +4,7 @@
   "description": "",
   "main": "voice_receiver.js",
   "dependencies": {
+    "discord-youtube-api": "^0.1.0",
     "discord.js": "^12.2.0",
     "opus": "0.0.0",
     "opusscript": "0.0.7",
