@@ -10,11 +10,12 @@ now = str(now)
 loc = now.split(" ")
 loc = loc[0]
 random_num = str(random.randint(0,99999999))
-loc = loc+"-"+random_num
+# loc = loc+"-"+random_num
 r = sr.Recognizer()
+
 for arg in sys.argv[1:]:
     with sr.AudioFile(f"{arg}.wav") as source:
-        audio = r.listen(source)
+        audio = r.record(source)
         text = r.recognize_google(audio)
         print(text)
         f = open(f"./speech_logs/{loc}.txt", "w+")
@@ -23,3 +24,5 @@ for arg in sys.argv[1:]:
 
 os.remove(f"{arg}.wav")
 
+# const connection = await message.member.voice.channel.join();
+# const dispatcher = await connection.play("song.mp3");

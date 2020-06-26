@@ -6,7 +6,6 @@ const config = require('./config.json');
 const YouTube = require("discord-youtube-api");
 const youtube = new YouTube("AIzaSyAZFggAoNGSEG1DFTXmm2A9uSeE1qYKAW8");
 let fileName;
-let content;
 
 // make a new stream for each time someone starts to talk
 function generateOutputFileName(){
@@ -52,23 +51,54 @@ client.on('message', (msg, user) => {
         const outputStream = generateOutputFile(msg.member.voice.channel, "205828948905426945", fileName);
         receiver.pipe(outputStream);
 
-        setInterval(function(){
+        // setInterval(function(){
+        //   convertRawData(fileName);
+        //   const voiceScan = ScanVoice(fileName);
+
+        //   setTimeout(function() {
+        //     const textFiles = fs.readdirSync('./speech_logs').filter(file => file.endsWith('.txt'));
+        //     try{
+        //       for (const file of textFiles) {
+        //         var cfile = file.replace(".txt","");
+        //         var contents = fs.readFileSync(`${cfile}`, 'utf8');
+        //         console.log(contents);
+        //       }
+        //     }catch (error){
+        //       console.log(error);
+        //     }
+        //     console.log("TIMER RESET");
+            
+        //   }, 3000);
+        // }, 5000)
+
+        setTimeout(function(){
+          convertRawData(fileName);
           const voiceScan = ScanVoice(fileName);
           const textFiles = fs.readdirSync('./speech_logs').filter(file => file.endsWith('.txt'));
-          for (const file of textFiles) {
-            fs.readFile(`${file}`, 'utf8', function(err, contents) {
+          try{
+            for (const file of textFiles) {
+              var cfile = file.replace(".txt","");
+              var contents = fs.readFileSync(`${cfile}`, 'utf8');
               console.log(contents);
-              contents = contents;
-            });
+            }
+          }catch (error){
+            console.log(error);
           }
-          console.log("TIMER RESET");
-        }, 10000)
+          setTimeout(function(){
+            fs.readFile('./speech_logs/2020-06-22.txt', 'utf8', function(err, data) {
+              if (err) throw err;
+              console.log(data);
+            });
+          },5000)
+        }, 7000)
+
+
 
 
         conn.on('speaking', async (user, speaking) => {
           //console.log(`${user.tag} is Speaking!`);
           //fileName = updateFile();
-          convertRawData(fileName);
+          // convertRawData(fileName);
           // const voiceScan = ScanVoice(fileName);
           // voiceScan.stderr.on('data', (data) => {
           //   console.log(`stdout: ${data}`);
