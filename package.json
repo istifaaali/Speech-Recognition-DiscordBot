@@ -1,7 +1,7 @@
 {
   "name": "voicediscord",
   "version": "1.0.0",
-  "description": "",
+  "description": "a discordbot that uses speech recognition for commands.\r I never cared to finish it",
   "main": "voice_receiver.js",
   "dependencies": {
     "discord-youtube-api": "^0.1.0",
@@ -14,6 +14,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Istifaa Ali",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/istifaaali/Speech-Recognition-DiscordBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/istifaaali/Speech-Recognition-DiscordBot/issues"
+  },
+  "homepage": "https://github.com/istifaaali/Speech-Recognition-DiscordBot#readme"
 }
