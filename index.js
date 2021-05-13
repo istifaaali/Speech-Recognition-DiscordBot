@@ -38,30 +38,34 @@ client.on('message', (msg, user) => {
             receiver.pipe(outputStream);
           }else if(!speaking.bitfield){
             console.log("stopped speaking");
-            ignorevoice = true;
-            const filepath = `./raw_recordings/1620925123320.pcm`;
-            const request = {
-              config: {
-                encoding: 'LINEAR16',
-                sampleRateHertz: 48000,
-                languageCode: 'en-US',
-                audioChannelCount: 2
-              },
-              interimResults: false, 
-            };
+            try{
+              ignorevoice = true;
+              const filepath = `./raw_recordings/${fileName}.pcm`;
+              const request = {
+                config: {
+                  encoding: 'LINEAR16',
+                  sampleRateHertz: 48000,
+                  languageCode: 'en-US',
+                  audioChannelCount: 2
+                },
+                interimResults: false, 
+              };
 
-            const recognizeStream = voiceclient
-              .streamingRecognize(request)
-              .on('error', console.error)
-              .on('data', data => {
-                console.log(
-                  `Transcription: ${data.results[0].alternatives[0].transcript}`
-                );
-                ignorevoice = false;
-            });
+              const recognizeStream = voiceclient
+                .streamingRecognize(request)
+                .on('error', console.error)
+                .on('data', data => {
+                  console.log(
+                    `Transcription: ${data.results[0].alternatives[0].transcript}`
+                  );
+                  ignorevoice = false;
+              });
 
-            fs.createReadStream(filepath).pipe(recognizeStream);
-            fileName = null;
+              fs.createReadStream(filepath).pipe(recognizeStream);
+              fileName = null;
+            }catch(error){
+              console.error(error);
+            }
           }
         });
 
