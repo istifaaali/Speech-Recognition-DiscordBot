@@ -14,6 +14,11 @@ which could be used to make commands to play music.
 
 This code dosn't contain any commands for the discord bot to do, it's only purpose is to convert speech to text.
 
+In order for the google api to work you need to provide authentication, in the form of a keyfile (JSON) or a key, I used a keyfile and passed the directory of the json file into
+the speech client. You can refer to the documenation below to learn how to authenticate.
+
+You can configure your google api key,command prefix and your Discord API token inside the config.json file.
+
 API References:
 
 https://googleapis.dev/nodejs/speech/latest/
