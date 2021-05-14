@@ -1,7 +1,7 @@
 {
   "name": "voicediscord",
   "version": "1.0.0",
-  "description": "a discordbot that uses speech recognition for commands.\r I never cared to finish it",
+  "description": "Discord Bot that is able to listen to commands",
   "main": "voice_receiver.js",
   "dependencies": {
     "@google-cloud/speech": "^4.5.0",
@@ -18,7 +18,7 @@
     "start": "nodemon index.js"
   },
   "author": "Istifaa Ali",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/istifaaali/Speech-Recognition-DiscordBot.git"
