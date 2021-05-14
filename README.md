@@ -30,7 +30,7 @@ https://cloud.google.com/speech-to-text/docs/encoding
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
+Distributed under the MIT License. See [`LICENSE`](LICENSE.txt) for more information.
 
 ## Contact
 
