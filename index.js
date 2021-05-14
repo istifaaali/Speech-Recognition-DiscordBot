@@ -1,14 +1,17 @@
+// Speech Recognition Discord Bot
+// Author: Istifaa Ali
+
 const Discord = require("discord.js");
 const fs = require('fs');
-const cp = require("child_process");
 const config = require('./config.json');
 const speech = require('@google-cloud/speech');
 var wavConverter = require('wav-converter');
 
 const client = new Discord.Client();
 const voiceclient = new speech.SpeechClient({
-  keyFilename: config.keyfile
+  keyFilename: config.keyfile // Google API needs to authenticate the API, the SpeechClient takes in multiple forms of authentication, see the documentation to see what can be passed through
 });
+
 let fileName;
 let receiver;
 let ignorevoice = false;
@@ -25,9 +28,9 @@ client.on('message', (msg, user) => {
     msg.member.voice.channel.join()
       .then(conn => {
         msg.reply('ready!');
-        receiver = conn.receiver.createStream("205828948905426945", { mode: "pcm", end: "manual"});
+        receiver = conn.receiver.createStream("USER ID HERE", { mode: "pcm", end: "manual"}); // Creates a receiver stream for only one user, this outputs raw audio data 
 
-        conn.on('speaking', async (user, speaking) => {
+        conn.on('speaking', async (user, speaking) => {// Called if a user starts speaking in the channel
           if(speaking.bitfield){
             console.log("started speaking");
             if(ignorevoice){
@@ -43,7 +46,7 @@ client.on('message', (msg, user) => {
               const filepath = `./raw_recordings/${fileName}.pcm`;
               const request = {
                 config: {
-                  encoding: 'LINEAR16',
+                  encoding: 'LINEAR16',// Discord.js outputs LINEAR16 PCM data which we convert into digital audio using the Google API
                   sampleRateHertz: 48000,
                   languageCode: 'en-US',
                   audioChannelCount: 2
@@ -55,7 +58,7 @@ client.on('message', (msg, user) => {
                 .on('error', console.error)
                 .on('data', data => {
                   console.log(
-                    `Transcription: ${data.results[0].alternatives[0].transcript}`
+                    `Transcription: ${data.results[0].alternatives[0].transcript}` // Output final speech to text data
                   );
                   ignorevoice = false;
               });
@@ -70,7 +73,6 @@ client.on('message', (msg, user) => {
   if(msg.content.startsWith(config.prefix+'leave')) {
     let [command, ...channelName] = msg.content.split(" ");
     let voiceChannel = msg.member.voice.channel;
-    // receiver.destroy();
     joined = false;
     voiceChannel.leave();
   }
