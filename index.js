@@ -7,7 +7,7 @@ var wavConverter = require('wav-converter');
 
 const client = new Discord.Client();
 const voiceclient = new speech.SpeechClient({
-  keyFilename:'./mc-server-280321-d908a7ad96dd.json'
+  keyFilename: config.keyfile
 });
 let fileName;
 let receiver;
@@ -50,7 +50,6 @@ client.on('message', (msg, user) => {
                 },
                 interimResults: false, 
               };
-
               const recognizeStream = voiceclient
                 .streamingRecognize(request)
                 .on('error', console.error)
@@ -60,15 +59,12 @@ client.on('message', (msg, user) => {
                   );
                   ignorevoice = false;
               });
-
               fs.createReadStream(filepath).pipe(recognizeStream);
-              fileName = null;
             }catch(error){
               console.error(error);
             }
           }
         });
-
       }).catch(console.log);
   }
   if(msg.content.startsWith(config.prefix+'leave')) {
