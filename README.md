@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [![Contributors][contributors-shield]][contributors-url]
 [![MIT License][license-shield]][LICENSE]
 
@@ -126,17 +127,52 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
+=======
+<br />
+<p align="center">
+  <h3 align="center">Speech Recognition Discord Bot</h3>
+  <p align="center">
+    A bot that uses Google's Speech to Text API to detect commands
+  </p>
+</p>
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+This code only only listens to one user and creates an output stream of raw audio data for the Google API to convert into digital audio and give a text result, 
+which could be used to make commands to play music.
+
+This code dosn't contain any commands for the discord bot to do, it's only purpose is to convert speech to text.
+
+In order for the google api to work you need to provide authentication, in the form of a keyfile (JSON) or a key, I used a keyfile and passed the directory of the json file into
+the speech client. You can refer to the documenation below to learn how to authenticate.
+
+You can configure your google api key,command prefix and your Discord API token inside the config.json file.
+
+API References:
+
+https://googleapis.dev/nodejs/speech/latest/
+
+https://discord.js.org/#/docs/main/stable/general/welcome
+
+https://cloud.google.com/speech-to-text/docs/encoding
+>>>>>>> 44f71336c5225878957014081a4ff03cbb2372b1
 
 <!-- LICENSE -->
 ## License
 
+<<<<<<< HEAD
 Distributed under the MIT License. See `LICENSE` for more information.
+=======
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
+>>>>>>> 44f71336c5225878957014081a4ff03cbb2372b1
 
 
 
 <!-- CONTACT -->
 ## Contact
 
+<<<<<<< HEAD
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
 
 Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
@@ -168,3 +204,10 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/github_username
+=======
+Discord - istifaaAli#1985
+
+Project Link: https://github.com/istifaaali/Speech-Recognition-DiscordBot
+
+
+>>>>>>> 44f71336c5225878957014081a4ff03cbb2372b1
