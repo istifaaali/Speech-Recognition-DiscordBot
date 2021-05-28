@@ -9,7 +9,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This code only only listens to one user and creates an output stream of raw audio data for the Google API to convert into digital audio and give a text result, 
+This code only listens to one user and creates an output stream of raw audio data for the Google API to convert into digital audio and give a text result, 
 which could be used to make commands to play music.
 
 This code dosn't contain any commands for the discord bot to do, it's only purpose is to convert speech to text.
